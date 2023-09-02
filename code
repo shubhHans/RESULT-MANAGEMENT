@@ -1,0 +1,72 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+result=pd.read_csv("C:/Users/hp/Desktop/result123.csv",index_col=0)
+while(True):
+    print()
+    print("--------------------------------------------------------")
+    print("--------------------Main Menu---------------------------")
+    print("1. Fetch data")
+    print("***DISPLAY RECORDS***")
+    print("2.Details of a specific subject")
+    print("3.Details of a specific student")
+    print("***UPDATE DATA***")
+    print("4.Add a new student record")
+    print("5.Delete a specific subject record")
+    print("6.Delete a specific student record")
+    print("***DATA VISUALISATION***")
+    print("7.Bar Graph")
+    print("8.Line Graph")
+    print("9.Exit")
+    print()
+    ch=int(input("Enter your choice:"))
+    if ch==1:
+        print(result)
+    elif ch==2:
+        a=input("enter subject name:")
+        print(result.loc[:,a])
+    elif ch==3:
+        b=input("enter student name:")
+        print(result.loc[b])
+    elif ch==4:
+        print("------ENTER DETAILS-------")
+        e=input("enter student name:")
+        f=int(input("enter marks in MATHS:"))
+        g=int(input("enter marks in PHYSICS:"))
+        h=int(input("enter marks in CHEMISTRY:"))
+        i=int(input("enter marks in ENGLISH:"))
+        j=int(input("enter marks in IP:"))
+        result.loc[e]=[f,g,h,i,j]
+        print()
+        print('DATA SUCCESSFULLY UPDATED')
+        print(result)
+    elif ch==5:
+        print("--------ENTER DETAILS--------")
+        k=input("enter subject name:")
+        result=result.drop(k,axis=1)
+        print()
+        print('DATA SUCCESSFULLY UPDATED')
+        print(result)
+    elif ch==6:
+        print("--------ENTER DETAILS--------")
+        l=input("enter student name:")
+        result=result.drop(l,axis=0)
+        print()
+        print('DATA SUCCESSFULLY UPDATED')
+        print(result)
+    elif ch==7:
+        result.plot(kind="bar")
+        plt.xlabel("student")
+        plt.ylabel("marks")
+        plt.title('class performance')
+        plt.show()
+    elif ch==8:
+        result.plot(kind="line")
+        plt.xlabel('students')
+        plt.ylabel('marks')
+        plt.title('class performance')
+        plt.show()
+    elif ch==9:
+        break
+    else:
+        print("invalid input")
+
